@@ -270,7 +270,7 @@ async function getQuestions(message, test_link) {
     
     await sleep();
   } while ((await page.$('a[title=Następne]') !== null) || (await page.$('a[title="Zatwierdź odpowiedź"]') !== null));
-  //await browser.close();
+  await browser.close();
 }
 
 client.on("message", (message) => {
