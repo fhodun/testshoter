@@ -1,0 +1,28 @@
+{
+  "name": "testshoter",
+  "version": "1.0.0",
+  "description": "Discord bot that send content of questions on testportal.pl written in JavaScript",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fhodun/testshoter.git"
+  },
+  "author": "Filip Hodun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fhodun/testshoter/issues"
+  },
+  "homepage": "https://github.com/fhodun/testshoter#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "node-fetch": "^2.6.1",
+    "puppeteer": "^5.5.0",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0"
+  }
+}
