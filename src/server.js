@@ -4,8 +4,13 @@ const validator = require("validator");
 const Discord = require("discord.js");
 // eslint-disable-next-line no-unused-vars
 const { Client, MessageEmbed } = require("discord.js");
-const { token, prefix, sleeptime, version } = require("./config.json");
+let { token, prefix, sleeptime, version } = require("./config.json");
 const client = new Discord.Client();
+
+//take token form heroku .env
+if(token == "") {
+  token = process.env.TOKEN;
+}
 
 // definition of sleep function
 function sleep() {
