@@ -22,7 +22,6 @@ function embedMessage(message, title, description) {
 }
 
 // get screenshots from testportal
-// TODO: different login details
 // TODO: better optimization
 async function getQuestions(message, test_link) {
   const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
@@ -32,82 +31,10 @@ async function getQuestions(message, test_link) {
   await sleep();
 
   // input tester data
-  // TODO: need to optimize
-  // please don't bully me for that
   let that_must_be_here;
   try {
     await page.evaluate(
-      () => (document.querySelector("input[name=firstName]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=lastName]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=Klasa_text]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=identificator]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=personalId]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=phone]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=organizationName]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=city]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=postalCode]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=additional]").value = "‎")
-    );
-  } catch (error) {
-    that_must_be_here = 1;
-  }
-  try {
-    await page.evaluate(
-      () => (document.querySelector("input[name=street]").value = "a@a.aa")
+      () => (document.querySelectorAll(".mdc-text-field__input").forEach((e) => e.value = "‎"))
     );
   } catch (error) {
     that_must_be_here = 1;
@@ -206,9 +133,6 @@ async function getQuestions(message, test_link) {
     });
     await sleep();
 
-    //await page.screenshot({ path: `${folder}/screenshot${1}.png` });
-    //await message.channel.send({ files: [`${folder}/screenshot${1}.png`] });
-    
     let question_n = await page.$eval(
       ".question_header_content",
       (el) => el.textContent
@@ -321,7 +245,7 @@ client.on("message", (message) => {
       );
     }
   } else if (command === "version") {
-    fetch("https://api.github.com/repos/fhodun/testshots/releases/latest")
+    fetch("https://api.github.com/repos/fhodun/testshoter/releases/latest")
       .then((response) => response.json())
       .then((data) => {
         if (data.tag_name === version) {
