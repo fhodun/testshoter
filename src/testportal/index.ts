@@ -49,10 +49,11 @@ const isQuestionPage = async (page: puppeteer.Page): Promise<boolean> => {
   );
 };
 
-export const getQuestions = async (testURL: string) => {
+export async function* getQuestions(
+  testURL: string,
+): AsyncGenerator<Buffer, void, void> {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
-    headless: false,
   });
   const page = await browser.newPage();
   await page.goto(testURL, { waitUntil: 'networkidle0' });
@@ -61,6 +62,10 @@ export const getQuestions = async (testURL: string) => {
   for (let i = 0; i < ANSWER_LIMIT; i++) {
     await page.waitForNavigation({ waitUntil: 'networkidle0' });
     if (!(await isQuestionPage(page))) break;
+    yield page.screenshot({
+      encoding: 'binary',
+    });
+
     await submitAnswer(page);
   }
-};
+}
