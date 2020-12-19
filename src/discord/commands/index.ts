@@ -1,4 +1,5 @@
 import { checkNewestVersion } from '@/misc';
+import { getQuestions } from '@/testportal';
 import validator from 'validator';
 import { embedMessage } from '../misc';
 import { Command, CommandHandler } from '../types';
@@ -19,6 +20,11 @@ export const onGetQuestions: CommandHandler = async (cmd) => {
       'Wrong URL',
       'You entered the wrong testportal link, \n here an example `!test (testportal_test_link)`',
     );
+  for await (let screenshot of getQuestions(testURL)) {
+    cmd.msg.channel.send('We got screenshot of question!', {
+      files: [screenshot],
+    });
+  }
 
   // embedMessage(
   //   message,
