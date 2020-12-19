@@ -27,6 +27,25 @@ const submitForm = (page: puppeteer.Page) => {
   });
 };
 
+const submitAnswer = (page: puppeteer.Page) => {
+  return page.$eval(
+    '#questionForm > div > div.test_button_box.section > a',
+    (e) => {
+      if (!(e instanceof HTMLElement))
+        throw new Error('Submit question button is invalid!');
+      e.click();
+    },
+  );
+};
+
+const isQuestionPage = async (page: puppeteer.Page): Promise<boolean> => {
+  return page.evaluate(() =>
+    document.querySelector(
+      '#questionForm > div > div.test_button_box.section > a',
+    ),
+  );
+};
+
 export const getQuestions = async (testURL: string) => {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
@@ -36,5 +55,10 @@ export const getQuestions = async (testURL: string) => {
   await page.goto(testURL, { waitUntil: 'networkidle0' });
   await fillForm(page);
   await submitForm(page);
-  await page.waitForNavigation({ waitUntil: 'networkidle0' });
+  while (true) {
+    await page.waitForNavigation({ waitUntil: 'networkidle0' });
+    if (!(await isQuestionPage(page))) break;
+    await submitAnswer(page);
+  }
+  console.log('Test finished!');
 };
