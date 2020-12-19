@@ -10,9 +10,9 @@
   •
   <a href="#important">Important</a>
   •
-  <a href="#installation">Installation</a>
-  •
   <a href="#commands">Commands</a>
+  •
+  <a href="#installation">Installation</a>
   •
   <a href="#community">Community</a>
   •
@@ -32,10 +32,6 @@ The most important informations the bot:
 - bot is not invisible, the teacher sees it as an empty field in the results, but if it is not familiar with technology, it won't understand that, example https://i.imgur.com/B9fE0gP.png
 - if there is an open question in the test, the answer to which is required, the bot will stop
 
-## Installation
-
-Coming soon
-
 ## Commands
 
  - `>test (testportal_test_link)` testportal program start
@@ -44,6 +40,9 @@ Coming soon
  - `>important` displays the most important informations
  - `>wazne` displays the most important informations in Polish
 
+## Installation
+
+**Coming soon**
 
 ## Community
 
