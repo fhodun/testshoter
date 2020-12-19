@@ -1,5 +1,8 @@
 import puppeteer from 'puppeteer';
 
+// Max answers per test, used to avoid endless loop
+const ANSWER_LIMIT = 200;
+
 const fillForm = (page: puppeteer.Page) => {
   return page.$$eval('input', (inputs) =>
     inputs.map((input) => {
@@ -55,10 +58,9 @@ export const getQuestions = async (testURL: string) => {
   await page.goto(testURL, { waitUntil: 'networkidle0' });
   await fillForm(page);
   await submitForm(page);
-  while (true) {
+  for (let i = 0; i < ANSWER_LIMIT; i++) {
     await page.waitForNavigation({ waitUntil: 'networkidle0' });
     if (!(await isQuestionPage(page))) break;
     await submitAnswer(page);
   }
-  console.log('Test finished!');
 };
