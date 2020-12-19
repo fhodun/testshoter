@@ -4,7 +4,8 @@
   "description": "Discord bot that send content of questions on testportal.pl written in JavaScript",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node -r dotenv/config -r tsconfig-paths/register .",
+    "start:dev": "ts-node-dev -r dotenv/config -r tsconfig-paths/register ."
   },
   "repository": {
     "type": "git",
@@ -17,12 +18,17 @@
   },
   "homepage": "https://github.com/fhodun/testshoter#readme",
   "dependencies": {
+    "@typeit/discord": "^4.0.8",
     "discord.js": "^12.5.1",
     "node-fetch": "^2.6.1",
     "puppeteer": "^5.5.0",
     "validator": "^13.5.2"
   },
   "devDependencies": {
-    "eslint": "^7.15.0"
+    "@types/node-fetch": "^2.5.7",
+    "@types/validator": "^13.1.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.15.0",
+    "typescript": "^4.1.3"
   }
 }
