@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-const fillForm = async (page: puppeteer.Page) => {
+const fillForm = (page: puppeteer.Page) => {
   return page.$$eval('input', (inputs) =>
     inputs.map((input) => {
       if (!(input instanceof HTMLInputElement)) return;
@@ -19,6 +19,14 @@ const fillForm = async (page: puppeteer.Page) => {
   );
 };
 
+const submitForm = (page: puppeteer.Page) => {
+  return page.$eval('#start-form-submit', (e) => {
+    if (!(e instanceof HTMLElement))
+      throw new Error('Submit form button is invalid!');
+    e.click();
+  });
+};
+
 export const getQuestions = async (testURL: string) => {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
@@ -27,4 +35,6 @@ export const getQuestions = async (testURL: string) => {
   const page = await browser.newPage();
   await page.goto(testURL, { waitUntil: 'networkidle0' });
   await fillForm(page);
+  await submitForm(page);
+  await page.waitForNavigation({ waitUntil: 'networkidle0' });
 };
