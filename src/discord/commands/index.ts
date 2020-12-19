@@ -1,6 +1,14 @@
-import { checkNewestVersion } from '@/services/misc';
+import { checkNewestVersion } from '@/misc';
+import validator from 'validator';
 import { embedMessage } from '../misc';
 import { Command, CommandHandler } from '../types';
+
+// Duplicated from ../index.ts, maybe fix
+const commandPrefix = process.env.COMMAND_PREFIX;
+if (!commandPrefix)
+  throw new Error(
+    "COMMAND_PREFIX is not defined in .env, default value is '>'",
+  );
 
 export const onGetQuestions: CommandHandler = async (cmd) => {
   const testURL = cmd.args[0];
@@ -51,19 +59,19 @@ export const onShowHelp = async (cmd: Command) => {
     'Testshots commands help',
     '**Commands: **\n' +
       ':white_check_mark: `' +
-      `${prefix}` +
+      `${commandPrefix}` +
       'test (testportal_test_link)` testportal test screenshoting start\n' +
       ':new: `' +
-      `${prefix}` +
+      `${commandPrefix}` +
       'version` check the bot is up to date\n' +
       ':label: `' +
-      `${prefix}` +
+      `${commandPrefix}` +
       'help` grants help\n' +
       ':bangbang: `' +
-      `${prefix}` +
+      `${commandPrefix}` +
       'important` displays the most important informations\n' +
       ':flag_pl: `' +
-      `${prefix}` +
+      `${commandPrefix}` +
       'wazne` displays the most important informations in Polish\n' +
       '\n**:busts_in_silhouette: Support server: **\n' +
       'https://discord.gg/TWRwsnMzD9 ',

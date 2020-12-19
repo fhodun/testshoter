@@ -8,6 +8,12 @@ import {
 import { embedMessage } from './misc';
 import { AvailableCommand } from './types';
 
+const commandPrefix = process.env.COMMAND_PREFIX;
+if (!commandPrefix)
+  throw new Error(
+    "COMMAND_PREFIX is not defined in .env, default value is '>'",
+  );
+
 export const commands: AvailableCommand[] = [
   {
     handler: onGetQuestions,
@@ -42,9 +48,9 @@ export const initDiscordClient = async () => {
   await resolveReadyClient(client);
 
   client.on('message', async (msg) => {
-    if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+    if (!msg.content.startsWith(commandPrefix) || msg.author.bot) return;
 
-    const args = msg.content.slice(prefix.length).trim().split(/ +/);
+    const args = msg.content.slice(commandPrefix.length).trim().split(/ +/);
     const command = args.shift()?.toLowerCase();
     if (!command) throw new Error('Unable to retreive command from message');
 
