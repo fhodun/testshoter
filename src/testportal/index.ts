@@ -64,6 +64,7 @@ export async function* getQuestions(
     args: ['--no-sandbox'],
   });
   const page = await browser.newPage();
+  await page.setDefaultNavigationTimeout(0);
   await page.goto(testURL.url.href, { waitUntil: 'networkidle0' });
   await fillForm(page);
   await submitForm(page);
