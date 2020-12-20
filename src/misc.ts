@@ -10,10 +10,14 @@ export const checkNewestVersion = async (): Promise<string> => {
   return json.tag_name;
 };
 
-export const validateTestURL = (
-  strURL: string,
-): { url: URL; err?: undefined } | { err: Error } => {
-  let url;
+export interface TestURL {
+  url: URL;
+  testID: string;
+  err?: undefined;
+}
+
+export const validateTestURL = (strURL: string): TestURL | { err: Error } => {
+  let url: URL;
   try {
     url = new URL(strURL);
     if (url.host !== 'www.testportal.pl')
@@ -30,8 +34,8 @@ export const validateTestURL = (
       );
     if (url.protocol !== 'https:')
       throw new Error('Invalid test protocol, expected https:');
-    if (!url.search.startsWith('?t=') || url.search.length !== 15)
-      throw new Error('Invalid test search params, expected ?t=xxxxxxxxxxxx');
+    const testID = url.searchParams.get('t');
+    if (!testID) throw new Error('URL does not contain `t` search param');
   } catch (err) {
     return {
       err,
@@ -39,5 +43,7 @@ export const validateTestURL = (
   }
   return {
     url,
+    // assertion here bcs im sure that won't be null
+    testID: url.searchParams.get('t') as string,
   };
 };
