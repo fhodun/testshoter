@@ -73,6 +73,17 @@ export async function* getQuestions(
       console.log(`Completed test TestID: ${testURL.testID}`);
       return;
     }
+    const totalWidth = await page.evaluate(
+      () => document.documentElement.offsetWidth
+    );
+    const totalHeight = await page.evaluate(
+      () => document.documentElement.offsetHeight
+    );
+    await page.setViewport({
+      width: totalWidth,
+      height: totalHeight,
+      deviceScaleFactor: 1,
+    });
     console.log(`Screenshoting question ${i + 1}, TestID: ${testURL.testID}`);
     const image = await page.screenshot({ encoding: 'binary' });
     yield {
