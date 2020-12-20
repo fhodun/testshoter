@@ -36,7 +36,8 @@ const submitAnswer = (page: puppeteer.Page) => {
     (e) => {
       if (!(e instanceof HTMLElement))
         throw new Error('Submit question button is invalid!');
-      e.click();
+      if (!e.onclick) throw new Error('Button does not have onclick property');
+      e.onclick(new MouseEvent('click'));
     },
   );
 };
