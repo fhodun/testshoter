@@ -31,7 +31,7 @@ const initStandalone = async () => {
   while (true) {
     const testURL = await getTestURLFromUserInput();
     for await (const question of getQuestions(testURL)) {
-      console.log(question);
+      // console.log(question);
     }
   }
 };

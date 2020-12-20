@@ -70,10 +70,10 @@ export async function* getQuestions(
   for (let i = 0; i < ANSWER_LIMIT; i++) {
     await page.waitForNavigation({ waitUntil: 'networkidle2' });
     if (!(await isQuestionPage(page))) {
-      console.log(`Completed test ID: ${testURL.testID}`);
+      console.log(`Completed test TestID: ${testURL.testID}`);
       return;
     }
-    console.log(`Screenshoting question ${i + 1}, ID: ${testURL.testID}`);
+    console.log(`Screenshoting question ${i + 1}, TestID: ${testURL.testID}`);
     const image = await page.screenshot({ encoding: 'binary' });
     yield {
       image,
