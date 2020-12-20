@@ -1,4 +1,4 @@
-import { checkNewestVersion } from '@/misc';
+import { checkNewestVersion, validateTestURL } from '@/misc';
 import { getQuestions } from '@/testportal';
 import validator from 'validator';
 import { embedMessage } from '../misc';
@@ -14,13 +14,15 @@ if (!commandPrefix)
 export const onGetQuestions: CommandHandler = async (cmd) => {
   const testURL = cmd.args[0];
   if (!testURL) throw new Error('Test URL is not defined');
-  if (!validator.isURL(testURL))
+  const url = validateTestURL(testURL);
+  if (url.err) {
     return embedMessage(
       cmd.msg,
       'Wrong URL',
-      'You entered the wrong testportal link, \n here an example `!test (testportal_test_link)`',
+      `${url.err.message}\nhere an example ${'`!test (testportal_test_link)`'}`,
     );
-  for await (let screenshot of getQuestions(testURL)) {
+  }
+  for await (const screenshot of getQuestions(url)) {
     cmd.msg.channel.send('We got screenshot of question!', {
       files: [screenshot],
     });

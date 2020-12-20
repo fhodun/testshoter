@@ -1,14 +1,14 @@
 import inquirier from 'inquirer';
 import validator from 'validator';
 import { initDiscordClient } from './discord';
-import { validateTestURL } from './misc';
+import { TestURL, validateTestURL } from './misc';
 import { getQuestions } from './testportal';
 
 const init = async () => {
   const discordClient = await initDiscordClient();
 };
 
-const getTestURLFromUserInput = async (): Promise<URL> => {
+const getTestURLFromUserInput = async (): Promise<TestURL> => {
   const { testURL } = await inquirier.prompt<{ testURL: string }>([
     {
       type: 'input',
@@ -18,7 +18,7 @@ const getTestURLFromUserInput = async (): Promise<URL> => {
   try {
     const valid = validateTestURL(testURL);
     if (valid.err) throw valid.err;
-    return valid.url;
+    return valid;
   } catch (e) {
     console.log(e.message);
     return getTestURLFromUserInput();
@@ -28,7 +28,9 @@ const getTestURLFromUserInput = async (): Promise<URL> => {
 const initStandalone = async () => {
   console.log("Starting in standalone mode, discord client won't run");
   const testURL = await getTestURLFromUserInput();
-  getQuestions(testURL);
+  for await (const question of getQuestions(testURL)) {
+    console.log(question);
+  }
 };
 
 const standaloneMode =

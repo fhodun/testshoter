@@ -1,3 +1,4 @@
+import { TestURL } from '@/misc';
 import puppeteer from 'puppeteer';
 
 // Max answers per test, used to avoid endless loop
@@ -51,22 +52,27 @@ const isQuestionPage = async (page: puppeteer.Page): Promise<boolean> => {
 };
 
 export async function* getQuestions(
-  testURL: string,
+  testURL: TestURL,
 ): AsyncGenerator<Buffer, void, void> {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
+    headless: false,
   });
   const page = await browser.newPage();
-  await page.goto(testURL, { waitUntil: 'networkidle0' });
+  await page.goto(testURL.url.href, { waitUntil: 'networkidle0' });
   await fillForm(page);
   await submitForm(page);
   for (let i = 0; i < ANSWER_LIMIT; i++) {
-    await page.waitForNavigation({ waitUntil: 'networkidle0' });
-    if (!(await isQuestionPage(page))) break;
-    yield page.screenshot({
-      encoding: 'binary',
-    });
+    await page.waitForNavigation({ waitUntil: 'networkidle2' });
+    if (!(await isQuestionPage(page))) {
+      console.log(`Completed test ID: ${testURL.testID}`);
+      return;
+    }
+    console.log(`Screenshoting question ${i + 1}, ID: ${testURL.testID}`);
+    const screenshot = await page.screenshot({ encoding: 'binary' });
+    yield screenshot;
 
-    await submitAnswer(page);
+    submitAnswer(page);
   }
+  await browser.close();
 }
