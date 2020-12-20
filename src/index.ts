@@ -1,21 +1,28 @@
 import inquirier from 'inquirer';
 import validator from 'validator';
 import { initDiscordClient } from './discord';
+import { validateTestURL } from './misc';
 import { getQuestions } from './testportal';
 
 const init = async () => {
   const discordClient = await initDiscordClient();
 };
 
-const getTestURLFromUserInput = async (): Promise<string> => {
+const getTestURLFromUserInput = async (): Promise<URL> => {
   const { testURL } = await inquirier.prompt<{ testURL: string }>([
     {
       type: 'input',
       name: 'testURL',
     },
   ]);
-  if (!validator.isURL(testURL)) return getTestURLFromUserInput();
-  return testURL;
+  try {
+    const valid = validateTestURL(testURL);
+    if (valid.err) throw valid.err;
+    return valid.url;
+  } catch (e) {
+    console.log(e.message);
+    return getTestURLFromUserInput();
+  }
 };
 
 const initStandalone = async () => {
