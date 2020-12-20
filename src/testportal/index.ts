@@ -62,7 +62,6 @@ export async function* getQuestions(
 ): AsyncGenerator<QuestionScreenshot, void, void> {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
-    headless: false,
   });
   const page = await browser.newPage();
   await page.goto(testURL.url.href, { waitUntil: 'networkidle0' });
