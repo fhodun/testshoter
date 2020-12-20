@@ -51,9 +51,15 @@ const isQuestionPage = async (page: puppeteer.Page): Promise<boolean> => {
   );
 };
 
+interface QuestionScreenshot {
+  image: Buffer;
+  testID: string;
+  question: number;
+}
+
 export async function* getQuestions(
   testURL: TestURL,
-): AsyncGenerator<Buffer, void, void> {
+): AsyncGenerator<QuestionScreenshot, void, void> {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
     headless: false,
@@ -69,8 +75,12 @@ export async function* getQuestions(
       return;
     }
     console.log(`Screenshoting question ${i + 1}, ID: ${testURL.testID}`);
-    const screenshot = await page.screenshot({ encoding: 'binary' });
-    yield screenshot;
+    const image = await page.screenshot({ encoding: 'binary' });
+    yield {
+      image,
+      testID: testURL.testID,
+      question: i + 1,
+    };
 
     submitAnswer(page);
   }

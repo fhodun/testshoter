@@ -23,8 +23,8 @@ export const onGetQuestions: CommandHandler = async (cmd) => {
     );
   }
   for await (const screenshot of getQuestions(url)) {
-    cmd.msg.channel.send('We got screenshot of question!', {
-      files: [screenshot],
+    cmd.msg.channel.send(`We got screenshot of question!`, {
+      files: [screenshot.image],
     });
   }
 
