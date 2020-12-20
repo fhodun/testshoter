@@ -27,9 +27,12 @@ const getTestURLFromUserInput = async (): Promise<TestURL> => {
 
 const initStandalone = async () => {
   console.log("Starting in standalone mode, discord client won't run");
-  const testURL = await getTestURLFromUserInput();
-  for await (const question of getQuestions(testURL)) {
-    console.log(question);
+
+  while (true) {
+    const testURL = await getTestURLFromUserInput();
+    for await (const question of getQuestions(testURL)) {
+      console.log(question);
+    }
   }
 };
 
