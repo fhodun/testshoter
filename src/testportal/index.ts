@@ -68,12 +68,14 @@ export async function* getQuestions(
   await page.goto(testURL.url.href, { waitUntil: 'networkidle0' });
   await fillForm(page);
   await submitForm(page);
-  for (let i = 0; i < ANSWER_LIMIT; i++) {
-    await page.waitForNavigation({ waitUntil: 'networkidle2' });
-    if (!(await isQuestionPage(page))) {
-      console.log(`Completed test TestID: ${testURL.testID}`);
-      return;
-    }
+  await page.waitForNavigation({ waitUntil: 'load' });
+
+  const questions = await page.$eval('.question_header_content', (el) => el.textContent);
+  if(!questions) throw new Error("There was an error with retrieving questions amount data");
+  const questionsAmount = parseInt(questions.slice(10));
+
+  for (let i = 0; i < questionsAmount; i++) {
+    if (i != 0) await page.waitForNavigation({ waitUntil: 'networkidle2' });
     const totalWidth = await page.evaluate(
       () => document.documentElement.offsetWidth
     );
@@ -92,8 +94,8 @@ export async function* getQuestions(
       testID: testURL.testID,
       question: i + 1,
     };
-
     submitAnswer(page);
   }
+  console.log(`Completed test TestID: ${testURL.testID}`);
   await browser.close();
 }
