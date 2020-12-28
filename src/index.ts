@@ -1,5 +1,4 @@
 import inquirier from 'inquirer';
-import validator from 'validator';
 import { initDiscordClient } from './discord';
 import { TestURL, validateTestURL } from './misc';
 import { getQuestions } from './testportal';

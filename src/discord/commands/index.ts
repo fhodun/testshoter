@@ -1,6 +1,5 @@
 import { checkNewestVersion, validateTestURL } from '@/misc';
 import { getQuestions } from '@/testportal';
-import validator from 'validator';
 import { embedMessage } from '../misc';
 import { Command, CommandHandler } from '../types';
 
