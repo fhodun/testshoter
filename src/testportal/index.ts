@@ -10,10 +10,10 @@ const fillForm = (page: puppeteer.Page) => {
       if (!(input instanceof HTMLInputElement)) return;
       switch (input.type) {
         case 'email':
-          input.value = 'xyz@xyz.xyz';
+          input.value = 'a@aa.aa';
           break;
         case 'text':
-          input.value = Math.random().toString(16);
+          input.value = '‎';
           break;
         case 'radio':
           input.checked = true;
