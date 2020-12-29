@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+import { Client} from 'discord.js';
 import {
   onCheckUpdates,
   onGetQuestions,
@@ -33,19 +33,13 @@ export const commands: AvailableCommand[] = [
   },
 ];
 
-const resolveReadyClient = (client: Client) => {
-  return new Promise<void>((resolve) => client.on('ready', resolve));
-};
-
 export const initDiscordClient = async () => {
   const discordToken = process.env.DISCORD_TOKEN;
-  if (!discordToken)
-    throw new Error('Unable to retreive DISCORD_TOKEN from .env');
+  if (!discordToken) throw new Error('Unable to retreive DISCORD_TOKEN from .env');
 
   const client = new Client();
   await client.login(discordToken);
-  // TODO: Make sure if it works properly
-  await resolveReadyClient(client);
+  client.on('ready', () => { console.log(`Logged in!`); });
 
   client.on('message', async (msg) => {
     if (!msg.content.startsWith(commandPrefix) || msg.author.bot) return;
