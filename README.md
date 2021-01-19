@@ -49,7 +49,7 @@ The most important informations the bot:
  - Open console and go to location where downloads the file to folder testshoter-main and run `npm install && npm run start`.
  - To run yor bot next time open console in location where bot is downloading and run `npm start`.
  - To add bot to server go [to](https://discord.com/developers/applications) and select your application.
- - In menu select [OAuth2](https://imgur.com/TtXF7U2) and select [bot](https://imgur.com/TtXF7U2) and in te table below select `Send Messages, Menage Messages, Embed links,  Attach Files`.<br>
+ - In menu select [OAuth2](https://imgur.com/TtXF7U2) and select [bot](https://imgur.com/TtXF7U2) and in te table below select `Send Messages, Menage Messages, Embed links,  Attach Files`.
  - Click `Copy` button and paste this address to web browser.
 
 ## Community
