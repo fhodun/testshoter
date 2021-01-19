@@ -42,7 +42,15 @@ The most important informations the bot:
 
 ## Installation
 
-**Coming soon**
+ - Download and install [Node.js](https://nodejs.org/en/).
+ - Download the bot from [Github](https://github.com/fhodun/testshoter) zip file and decompress this file.
+ - Create a new discord [application](https://discord.com/developers/applications) and in menu select bot in this click button [add bot](https://imgur.com/WKQgdyH).
+ - Copy [Token](https://imgur.com/r322GcU) and open `.env.example` file and paste the token to `<your-token-here>` next rename this file to `.env`.
+ - Open console and go to location where downloads the file to folder testshoter-main and run `npm install && npm run start`.
+ - To run yor bot next time open console in location where bot is downloading and run `npm start`.
+ - To add bot to server go [to](https://discord.com/developers/applications) and select your application.
+ - In menu select [OAuth2](https://imgur.com/TtXF7U2) and select [bot](https://imgur.com/TtXF7U2) and in te table below select `Send Messages, Menage Messages, Embed links,  Attach Files`.<br>
+ - Click `Copy` button and paste this address to web browser.
 
 ## Community
 
