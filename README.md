@@ -37,7 +37,7 @@ There are several ways you can get the Testshoter:
 The recommended way to get Testshoter is to use git to directly clone repository:
 
 ```sh
-git clone
+git clone https://github.com/fhodun/testshoter
 ```
 
 This will clone the latest version of the Testshoter repository to a **testshoter** folder.
