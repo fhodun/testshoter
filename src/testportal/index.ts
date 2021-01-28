@@ -13,6 +13,9 @@ const fillForm = (page: puppeteer.Page) => {
           input.value = 'a@aa.aa';
           break;
         case 'text':
+          if (input.name == 'Nr_w_dzienniku_number' || input.name == 'age')
+          input.value = '0';
+          else
           input.value = '‎';
           break;
         case 'radio':
