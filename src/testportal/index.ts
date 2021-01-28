@@ -13,6 +13,9 @@ const fillForm = (page: puppeteer.Page) => {
           input.value = 'a@aa.aa';
           break;
         case 'text':
+          if (input.name == 'Nr_w_dzienniku_number' || input.name == 'age')
+          input.value = '0';
+          else
           input.value = '‎';
           break;
         case 'radio':
@@ -61,7 +64,7 @@ export async function* getQuestions(
   testURL: TestURL,
 ): AsyncGenerator<QuestionScreenshot, void, void> {
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox'],
+    args: ['--no-sandbox'], headless: false
   });
   const page = await browser.newPage();
   await page.setDefaultNavigationTimeout(0);
