@@ -20,20 +20,6 @@ export const validateTestURL = (strURL: string): TestURL | { err: Error } => {
   let url: URL;
   try {
     url = new URL(strURL);
-    if (url.host !== 'www.testportal.pl')
-      throw new Error('Invalid test host, expected www.testportal.pl');
-    if (url.hostname !== 'www.testportal.pl')
-      throw new Error('Invalid test hostname, expected www.testportal.pl');
-    if (url.origin !== 'https://www.testportal.pl')
-      throw new Error(
-        'Invalid test origin, expected https://www.testportal.pl',
-      );
-    if (url.pathname !== '/exam/LoadTestStart.html')
-      throw new Error(
-        'Invalid test pathname, expected /exam/LoadTestStart.html',
-      );
-    if (url.protocol !== 'https:')
-      throw new Error('Invalid test protocol, expected https:');
     const testID = url.searchParams.get('t');
     if (!testID) throw new Error('URL does not contain `t` search param');
   } catch (err) {
