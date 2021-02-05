@@ -73,10 +73,6 @@ Run your bot using npm:
 npm start
 ```
 
-## Community server
-
-Join our polish Testshoters community [Discord server](https://discord.gg/TWRwsnMzD9).
-
 ## Greetings
 
 Thanks to [gbaransky](https://github.com/gbaranski) for his great contribution to the project.  
