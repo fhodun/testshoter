@@ -29,7 +29,7 @@ export const onGetQuestions: CommandHandler = async (cmd) => {
 
   // embedMessage(
   //   message,
-  //   'Screenshoting start',
+  //   'Screenshotting start',
   //   'This may take a while, please be patient',
   // );
   // getQuestions(message, test_link);
@@ -67,7 +67,7 @@ export const onShowHelp = async (cmd: Command) => {
     '**Commands: **\n' +
       ':white_check_mark: `' +
       `${commandPrefix}` +
-      'test (testportal_test_link)` testportal test screenshoting start\n' +
+      'test (testportal_test_link)` testportal test screenshotting start\n' +
       ':new: `' +
       `${commandPrefix}` +
       'version` check the bot is up to date\n' +
