@@ -18,7 +18,7 @@ export const onGetQuestions: CommandHandler = async (cmd) => {
     return embedMessage(
       cmd.msg,
       'Wrong URL',
-      `${url.err.message}\nhere an example ${'`!test (testportal_test_link)`'}`,
+      `${url.err.message}\nhere an example \`!test (testportal_test_link)\``,
     );
   }
   for await (const screenshot of getQuestions(url)) {
