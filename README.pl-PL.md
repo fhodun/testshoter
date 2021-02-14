@@ -7,7 +7,7 @@
 
 ## Przegląd
 
-Discord bot wysyłający treść pytań i odpowiedzi do testów na testportal'u
+Bot Discord wysyłający treść pytań i odpowiedzi do testów na testportal'u
 
 - [Testshoter Discord Bot](#testshoter-discord-bot)
 - [Ważne](#ważne)
