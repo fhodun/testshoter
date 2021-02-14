@@ -6,6 +6,12 @@
 
 Discord bot that send content of questions and possible answers for tests on testportal.pl
 
+- [Important](important)
+- [Commands](commands)
+- [Installation and starting up](installation-and-starting-up)
+- [Greetings](greetings)
+- [License and disclaimer](license-and-disclaimer)
+
 ## Important
 
 The most important informations the bot:
@@ -33,5 +39,6 @@ Inspiration and idea taken from [arekminajj/testportal-discord-bot](https://gith
 
 ## License and disclaimer
 
-Released under the MIT license.  
+Released under the [MIT license](LICENSE).  
+Created in educational purposes.  
 The author assumes no responsibility for any damages that may result from the use of this software.
