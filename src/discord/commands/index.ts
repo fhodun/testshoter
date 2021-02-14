@@ -46,6 +46,7 @@ export const onImportant: CommandHandler = async (cmd) => {
           ' - the bot **is not invisible**, the teacher sees it as an empty field in the results, but if it is not familiar with technology, it will not understand that, example https://i.imgur.com/B9fE0gP.png\n' +
           ' - if there is an **open** question in the test, the answer to which is **required**, the bot will stop\n',
       );
+      break;
     case 'wazne':
       embedMessage(
         cmd.msg,
@@ -55,6 +56,7 @@ export const onImportant: CommandHandler = async (cmd) => {
           ' - bot **nie jest niewidzialny**, nauczyciel widzi go w wynikach jako puste pole lecz jeżeli nie ogarnia to się nie skapnie, przykład https://i.imgur.com/B9fE0gP.png\n' +
           ' - jeżeli w teście istnieje pytanie **otwarte**, na które odpowiedź jest **wymagana** to bot się zatrzyma\n',
       );
+      break;
     default:
       throw new Error('Unsupported languague');
   }
