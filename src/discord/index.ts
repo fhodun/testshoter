@@ -52,7 +52,7 @@ export const initDiscordClient = async () => {
       cmd.triggers.includes(command),
     );
     if (!targetCommand) {
-      embedMessage(msg, 'Wrong command', 'Use `!help` for some help...');
+      await embedMessage(msg, 'Wrong command', 'Use `!help` for some help...');
       return;
     }
     await targetCommand.handler({
