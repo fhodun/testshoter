@@ -97,7 +97,7 @@ export async function* getQuestions(
       testID: testURL.testID,
       question: i + 1,
     };
-    submitAnswer(page);
+    await submitAnswer(page);
   }
   console.log(`Completed test TestID: ${testURL.testID}`);
   await browser.close();
