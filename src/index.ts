@@ -1,4 +1,4 @@
-import inquirier from 'inquirer';
+import inquirer from 'inquirer';
 import { initDiscordClient } from './discord';
 import { TestURL, validateTestURL } from './misc';
 import { getQuestions } from './testportal';
@@ -8,7 +8,7 @@ const init = async () => {
 };
 
 const getTestURLFromUserInput = async (): Promise<TestURL> => {
-  const { testURL } = await inquirier.prompt<{ testURL: string }>([
+  const { testURL } = await inquirer.prompt<{ testURL: string }>([
     {
       type: 'input',
       name: 'testURL',
