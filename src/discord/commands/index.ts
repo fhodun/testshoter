@@ -41,7 +41,7 @@ export const onImportant: CommandHandler = async (cmd) => {
       await embedMessage(
           cmd.msg,
           'Important',
-          'The most important informations: \n' +
+          'The most important information: \n' +
           ' - the bot **does not send the answers** to the tests, only the content of the questions and answers\n' +
           ' - the bot **is not invisible**, the teacher sees it as an empty field in the results, but if it is not familiar with technology, it will not understand that, example https://i.imgur.com/B9fE0gP.png\n' +
           ' - if there is an **open** question in the test, the answer to which is **required**, the bot will stop\n',
@@ -78,10 +78,10 @@ export const onShowHelp = async (cmd: Command) => {
       'help` grants help\n' +
       ':bangbang: `' +
       `${commandPrefix}` +
-      'important` displays the most important informations\n' +
+      'important` displays the most important information\n' +
       ':flag_pl: `' +
       `${commandPrefix}` +
-      'wazne` displays the most important informations in Polish\n' +
+      'wazne` displays the most important information in Polish\n' +
       '\n**:busts_in_silhouette: Support server: **\n' +
       'https://discord.gg/TWRwsnMzD9 ',
   );
