@@ -22,6 +22,10 @@ The most important informations the bot:
 - `>important` displays the most important informations
 - `>wazne` displays the most important informations in Polish
 
+## Installation and starting up
+
+Go to the [wiki page](https://github.com/fhodun/testshoter/wiki/Installation-and-starting-up)
+
 ## Greetings
 
 Thanks to [gbaransky](https://github.com/gbaranski) for his great contribution to the project.  
