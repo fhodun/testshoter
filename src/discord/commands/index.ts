@@ -58,7 +58,7 @@ export const onImportant: CommandHandler = async (cmd) => {
       );
       break;
     default:
-      throw new Error('Unsupported languague');
+      throw new Error('Unsupported language');
   }
 };
 
