@@ -9,11 +9,11 @@
 
 Discord bot that send content of questions and possible answers for tests on testportal.pl
 
-- [Important](important)
-- [Commands](commands)
-- [Installation and starting up](installation-and-starting-up)
-- [Greetings](greetings)
-- [License and disclaimer](license-and-disclaimer)
+- [Important](important)  
+- [Commands](commands)  
+- [Installation and starting up](installation-and-starting-up)  
+- [Greetings](greetings)  
+- [License and disclaimer](license-and-disclaimer)  
 
 ## Important
 
