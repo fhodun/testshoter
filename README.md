@@ -42,6 +42,6 @@ Inspiration and idea taken from [arekminajj/testportal-discord-bot](https://gith
 
 ## License and disclaimer
 
-Released under the [MIT license](LICENSE).  
+Released under the [GNU GPL-3.0 license](LICENSE).  
 Created in educational purposes.  
 The author assumes no responsibility for any damages that may result from the use of this software.
