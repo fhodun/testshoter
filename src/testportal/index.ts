@@ -90,14 +90,14 @@ export async function* getQuestions(
       height: totalHeight,
       deviceScaleFactor: 1,
     });
-    console.log(`Screenshoting question ${i + 1}, TestID: ${testURL.testID}`);
+    console.log(`Screenshotting question ${i + 1}, TestID: ${testURL.testID}`);
     const image = await page.screenshot({ encoding: 'binary' });
     yield {
       image,
       testID: testURL.testID,
       question: i + 1,
     };
-    submitAnswer(page);
+    await submitAnswer(page);
   }
   console.log(`Completed test TestID: ${testURL.testID}`);
   await browser.close();

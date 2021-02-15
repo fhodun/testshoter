@@ -35,7 +35,7 @@ export const commands: AvailableCommand[] = [
 
 export const initDiscordClient = async () => {
   const discordToken = process.env.DISCORD_TOKEN;
-  if (!discordToken) throw new Error('Unable to retreive DISCORD_TOKEN from .env');
+  if (!discordToken) throw new Error('Unable to retrieve DISCORD_TOKEN from .env');
 
   const client = new Client();
   await client.login(discordToken);
@@ -46,13 +46,13 @@ export const initDiscordClient = async () => {
 
     const args = msg.content.slice(commandPrefix.length).trim().split(/ +/);
     const command = args.shift()?.toLowerCase();
-    if (!command) throw new Error('Unable to retreive command from message');
+    if (!command) throw new Error('Unable to retrieve command from message');
 
     const targetCommand = commands.find((cmd) =>
       cmd.triggers.includes(command),
     );
     if (!targetCommand) {
-      embedMessage(msg, 'Wrong command', 'Use `!help` for some help...');
+      await embedMessage(msg, 'Wrong command', 'Use `!help` for some help...');
       return;
     }
     await targetCommand.handler({
