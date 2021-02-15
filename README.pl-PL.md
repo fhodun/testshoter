@@ -101,6 +101,6 @@ Inspiracja i pomysł zaczerpnięte z [arekminajj/testportal-discord-bot](https:/
 
 ## Licencja i wyłączenie odpowiedzialności
 
-Wydany na licencji [MIT](LICENSE).  
+Wydany na licencji [GNU GPL-3.0](LICENSE).  
 Stworzone w celach edukacyjnych.  
 Autor nie ponosi żadnej odpowiedzialności za jakiekolwiek szkody, które mogą wyniknąć z korzystania z tego oprogramowania.
