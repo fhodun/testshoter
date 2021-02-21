@@ -25,11 +25,37 @@ The most important informations the bot:
 
 ## Commands
 
-- `>test (testportal_test_link)` testportal program start
-- `>version` check the bot is up to date
-- `>help` grants help
-- `>important` displays the most important informations
-- `>wazne` displays the most important informations in Polish
+- To testportal screenshoting program start
+
+```discord
+>test (testportal_test_link)
+```
+
+example: `>test https://www.testportal.pl/exam/LoadTestStart.html?t=565CaL1WT4UZ`
+
+- To check the bot is up to date
+
+```discord
+>version
+```
+
+- To grant help
+
+```discord
+>help
+```
+
+- To display the most important informations
+
+```discord
+>important
+```
+
+- To display the most important informations in Polish
+
+```discord
+>wazne
+```
 
 ## Installation and starting up
 

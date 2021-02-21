@@ -33,11 +33,37 @@ Najważniejsze informacje:
 
 ## Komendy
 
-- `>test (testportal_test_link)` rozpoczęcie programu
-- `>version` sprawdza czy wersja bota jest aktualna
-- `>help` pokazuje pomoc
-- `>important` wyświetla najważniejsze informacje po Angielsku
-- `>wazne` wyświetla najważniejsze informacje
+- Aby rozpocząć wykonywanie zrzutów ekranu testu
+
+```discord
+>test (testportal_test_link)
+```
+
+przykład: `>test https://www.testportal.pl/exam/LoadTestStart.html?t=565CaL1WT4UZ`
+
+- Aby sprawdzić czy bot jest aktualny
+
+```discord
+>version
+```
+
+- Aby wyświetlić pomoc
+
+```discord
+>help
+```
+
+- Aby wyświetlić najważniejsze informacje
+
+```discord
+>important
+```
+
+- Aby wyświetlić najważniejsze informacje po Polsku
+
+```discord
+>wazne
+```
 
 ## Instalacja i uruchamianie
 
@@ -80,7 +106,7 @@ następnie otwórz wygenerowany linku w przeglądarce i wybierz serwer.
 
 ### Instalowanie wymaganych pakietów
 
-Zainstaluj wymagane pakiety przy użyciu npm w terminalu:
+Zainstaluj wymagane pakiety w terminalu:
 
 ```sh
 npm install
@@ -88,7 +114,7 @@ npm install
 
 ### Uruchamianie bota
 
-Uruchom bota używając npm w terminalu:
+Uruchom bota w terminalu:
 
 ```sh
 npm start
