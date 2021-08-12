@@ -3,7 +3,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/fhodun/testshoter)](https://github.com/fhodun/testshoter/stargazers)
 [![GitHub license](https://img.shields.io/github/license/fhodun/testshoter)](https://github.com/fhodun/testshoter/blob/main/LICENSE)
 [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Ffhodun%2Ftestshoter)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Ffhodun%2Ftestshoter)  
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q83N219)
 
 ## Przegląd
 
